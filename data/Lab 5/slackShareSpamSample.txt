@@ -1,0 +1,584 @@
+Delivered-To: mikhliuk.k@gmail.com
+Received: by 2002:ac8:597:0:0:0:0:0 with SMTP id a23csp6083612qth;
+        Wed, 30 Oct 2019 07:38:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyyCMrvfZOuLF4ziobE4+n1uzueRIwbk4UZ+mndESkRlHofMRsE0LolEyUVBqLk6bKTHdoe
+X-Received: by 2002:aa7:c048:: with SMTP id k8mr21344209edo.254.1572446307935;
+        Wed, 30 Oct 2019 07:38:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1572446307; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PpdRxZzXH11HnOrHvpHhYgHsRJbhcWJmQl020gr1VOir2gaKsyrlFMkb3+Gv4EEaH8
+         YCdxaunVr4nBCRATwp0QQN7Q8R/GOXQANfBYk8JjuZ89GbTQ3L4itnUDXfL8wXSmwKav
+         m0X73E7dq4dZ9m320Riy9v5O2KoewM9tkBho8gSJy1y4oCI4uzjBmoXpGalZhA2/amYp
+         dQZgvOlAtS9wM/BU4y7QQYpMeKKfN5CxPtI+4CqfjQPnXyLd01blpJwV34lLODYw0Lj5
+         O+f7Og/6xdvmeJAOE5tH1h/901a5Zds8tiUUq10JJdgWS9YXayj/NTS9/JaOP4ZdXZXH
+         vpJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:message-id:to:subject:reply-to:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=Eiq7UGLF3uzcl1gtPrL9rhl9vaaBwCV46mLcD/Szh5k=;
+        b=z9bCZzB4FaWTrBQAGI8+3s7XnaGYnJWDLEtZufUGetyn5MpPeeK5Xo8ZhSoLWNus++
+         0Zeb3C0oQczWSZog3U7gHZwRmHsv9mZECpZE4FuXTaavDgR8nNSDB/k34ZcmmxaHEBMD
+         zLnE3boCzLMw6G0mV0LNTyan6bJs6EwkDr/r3EmeaFUCNIwgH0dcu0o8/mPhykz40Zjo
+         uZY3XBN4EYLaLquYZ4c8yEmqfSSZSp/cLFacSHpyV5IA9WgE6F/ZRGqUOgAI01foTeT8
+         o0tMao0DRu2raL7ZvrCUvnoeMheDW7VJvqfMienyfO/0hr6U7ONoHw/yeabAJ3CMA1qK
+         7Ofg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=temperror (dns failure for signature) header.i=@stackshare.io header.s=s1 header.b=Zuq7pWRz;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=cBT4Pgq3;
+       spf=pass (google.com: domain of bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io designates 168.245.96.169 as permitted sender) smtp.mailfrom="bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io"
+Return-Path: <bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io>
+Received: from xvfrshxw.outbound-mail.sendgrid.net (xvfrshxw.outbound-mail.sendgrid.net. [168.245.96.169])
+        by mx.google.com with ESMTPS id h21si1626300edb.20.2019.10.30.07.38.26
+        for <mikhliuk.k@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 30 Oct 2019 07:38:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io designates 168.245.96.169 as permitted sender) client-ip=168.245.96.169;
+Authentication-Results: mx.google.com;
+       dkim=temperror (dns failure for signature) header.i=@stackshare.io header.s=s1 header.b=Zuq7pWRz;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=cBT4Pgq3;
+       spf=pass (google.com: domain of bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io designates 168.245.96.169 as permitted sender) smtp.mailfrom="bounces+1375320-e195-mikhliuk.k=gmail.com@email.stackshare.io"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stackshare.io; h=content-type:from:mime-version:reply-to:subject:to:list-unsubscribe; s=s1; bh=Eiq7UGLF3uzcl1gtPrL9rhl9vaaBwCV46mLcD/Szh5k=; b=Zuq7pWR zL9CpUHhnxtAMWdu2t5Y9BSRnlQI2CBsLm4+MW+xqSLLc6yESGYwKOkfAnlAN19X G0Z77y0RvIe1FXQ5EVlkjpu35bi4IjWRTIIQFa5gIlgllv0pOFZpTN5MnJj4auq0 Ifo0xidri844RoPcnYSrqd/DY4rEL9Mi4E3c=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info; h=content-type:from:mime-version:reply-to:subject:to:list-unsubscribe:x-feedback-id; s=smtpapi; bh=Eiq7UGLF3uzcl1gtPrL9rhl9vaaBwCV46mLcD/Szh5k=; b=cB T4Pgq388K8yfmbPWL1ToxwrBmeEURzOHXY3S3O3eIR9tuOts1/Aknhgzo2KkJm6g /pF8VJ9ZLuyiQ1Wv2fS3DWpe5IJuRKW05D5QGaFWR5QluqPMkE/HpQNXoqAv4QJj 0o1DF0aQZchPAL+okd7MukoIDf8lpWTXOH1LGlQSg=
+Content-Type: multipart/alternative; boundary=3ac62827e3de048c98835c9cd6654dd3927dcf2b32967ea2632f52fc00c6
+Date: Wed, 30 Oct 2019 14:38:26 +0000 (UTC)
+From: StackShare <team@stackshare.io>
+Mime-Version: 1.0
+Reply-to: team@stackshare.io
+Subject: [Invite] 🔐 Private StackShare for Enterprise Teams
+To: mikhliuk.k@gmail.com
+Message-ID: <5ZPMFdceTlylHW5LNq4NFA@ismtpd0015p1iad2.sendgrid.net>
+List-Unsubscribe: <mailto:unsubscribe@email.stackshare.io?subject=https://u1375320.ct.sendgrid.net/asm/unsubscribe/*q*user_id=1375320*a*data=xrlJsRBLZ5F_8-1Mj9_AcampHTWPVmlqq6QHRdTG9EU-q02Kp-vhKEWuW1PFCrE9a7laFz4vAzW58q6mo9bqQJklDL2GwatsyChQ_EIklWORZNyVCTCpT3h0FFURxSZ58YjDSFH0fjcV1cWQsnpgYWwbzhAhzEQkprehakhcRImMYNOcrx6YC3SW14ko8iVDw3Zp5gNRrQDep6m9D5GNNT8Ji42joL8dTRKbQiN2LIPpBYZxO8v6jeZYdQlLUVd7ZAugj3Uu6DVHyn_bEEJbaGdBZGoG3ZVf8_d4jauS-g9oCIQnUa9LOgwQa6jbXDwd-i2EFBDx20yyof79_x-YLvVTqxsVkZofK23n1x6m3C5JuhUTqDuOkPoVZ4ZkQ14N0Km6igZIWut-oyMy1rs8MFxldbdU7xkqEIv7-3Z7NLV1hxH3MU_h-8StWHySorMW34SbS0qzFouxdqmJl7hTMpEec7n9HteLauknBJRUmULGSoRPaQlLNyTSUagQ_X08c_KXDnTiVhMr7jMdFEd2fwXRbQ-sLcXPQUQfAvuKw3DDVT1IyAa2qNUhvEw2_vzmTCYwSXj6UOeiMXZuB7OESBnE0F7i_BJystelT8jBNdQ=>
+X-SG-EID: L5ZJd+QguVri97xKB+6iMTRimWpzhM0vjJCGbbsFMbvZGs0RnsGtLW2ppar/LJ29P3idP7V1APi/0b 1D+KimI9M2pNMZ+MVg11YnltBCilLsMXwNT8XTrxZjkJygcdr8yx8TmBrsKrEGM9MElyeOQ2lM81Qr VEYLBf0dbM2kE5wNU1XJtBYZAjdO/LQ/d0Bz97lrv9/FHE8pgMSmykWHoaTkDhs+rH8QDalk8ZJZwz 4=
+X-SG-ID: Z2FxZazunBjVeNuNdzHDqrF8mxuCpi0krmont6YQrP3cyDjcTjAVccHNmib57pLPtk6vtP2wa1GMd4 XgorVRJZpq2Jna92zjRi5aLR8mbpSbH5cYVSy8FJBJwEWbyGav4wniRaJYXi3IvNVfQeRb8HKdoAV5 F3i04ZDvUCH8oMGMEhKGTPOOHlnVp0PoFqccQ/1OqzDvXscMJ5XeIIQTdO42dcukda4sq2eVK7ps40 o=
+X-Feedback-ID: 1375320:IbdDNWYeyeSbAYbWRtvVQWIC10goVMWHpDR4LigVujc=:ZXY725riO4ZgHRp9gzH/dxMS8ix4cqBRXC8a1zb/Ifo=:SG
+
+--3ac62827e3de048c98835c9cd6654dd3927dcf2b32967ea2632f52fc00c6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Map out your internal tech stacks
+
+https://stackshare.io
+
+https://stackshare.io/posts/announcing-private-stackshare-for-teams-beta
+
+Hey Konstantin,
+
+Today, we=E2=80=99re excited to announce the introduction of=C2=A0Private S=
+tackShare for Teams (Beta), the best way for your team to privately map out=
+ and share internal tech stacks and technology decisions=C2=A0=E2=9C=A8
+
+Large companies typically have this data and knowledge spread out over wiki=
+s, spreadsheets, private version control, chat messages, closed unsearchabl=
+e email accounts and listservs =F0=9F=98=A3 But we believe there's a better=
+ way to handle all of this.
+
+Private StackShare lives in a=C2=A0private enterprise-grade environment (cl=
+oud-hosted or on-prem) and helps you to:
+
+Reduce inefficiencies and duplication of technical efforts across engineeri=
+ng teams by developing a standard set of tools to solve common problems
+=09Streamline the evaluation of technologies for projects through structure=
+d comparisons and Q&A discussions within teams
+=09Shorten developer onboarding to new teams and projects by giving them an=
+ understanding of the stack they=E2=80=99ll be working on and the history b=
+ehind it
+
+Plus=C2=A0much more!=20
+
+Email us for more information=C2=A0=F0=9F=91=89=C2=A0private@stackshare.io =
+mailto:private@stackshare.io?subject=3DI'm%20interested%20in%20learning%20m=
+ore%20about%20Private%20StackShare%20for%20my%20company!&body=3DTell%20me%2=
+0more%20%3A)=C2=A0or read on to see if=C2=A0Private StackShare could be hel=
+pful for your team:
+
+=F0=9F=91=89 Read more about Private StackShare https://stackshare.io/posts=
+/announcing-private-stackshare-for-teams-beta
+
+- The StackShare Team
+
+P.S. ICYMI we recently launched brand NEW Company Engineering Profiles http=
+s://stackshare.io/posts/introducing-new-company-engineering-profiles- you c=
+an now discover and follow companies based on their tech stack to keep up w=
+ith jobs, tech talks, and more
+
+Unsubscribe https://u1375320.ct.sendgrid.net/asm/unsubscribe/?user_id=3D137=
+5320&data=3DxrlJsRBLZ5F_8-1Mj9_AcampHTWPVmlqq6QHRdTG9EU-q02Kp-vhKEWuW1PFCrE=
+9a7laFz4vAzW58q6mo9bqQJklDL2GwatsyChQ_EIklWORZNyVCTCpT3h0FFURxSZ58YjDSFH0fj=
+cV1cWQsnpgYWwbzhAhzEQkprehakhcRImMYNOcrx6YC3SW14ko8iVDw3Zp5gNRrQDep6m9D5GNN=
+T8Ji42joL8dTRKbQiN2LIPpBYZxO8v6jeZYdQlLUVd7ZAugj3Uu6DVHyn_bEEJbaGdBZGoG3ZVf=
+8_d4jauS-g9oCIQnUa9LOgwQa6jbXDwd-i2EFBDx20yyof79_x-YLvVTqxsVkZofK23n1x6m3C5=
+JuhUTqDuOkPoVZ4ZkQ14N0Km6igZIWut-oyMy1rs8MFxldbdU7xkqEIv7-3Z7NLV1hxH3MU_h-8=
+StWHySorMW34SbS0qzFouxdqmJl7hTMpEec7n9HteLauknBJRUmULGSoRPaQlLNyTSUagQ_X08c=
+_KXDnTiVhMr7jMdFEd2fwXRbQ-sLcXPQUQfAvuKw3DDVT1IyAa2qNUhvEw2_vzmTCYwSXj6UOei=
+MXZuB7OESBnE0F7i_BJystelT8jBNdQ=3D - Unsubscribe Preferences https://u13753=
+20.ct.sendgrid.net/asm/?user_id=3D1375320&data=3DwP6Z7iEgPOX_vfsM8k6qbaGww9=
+30ksnjXsGGwz1kJL-xn173XRvqpil42nnyV7Wcq75PWWFvp47jqu_i__m-Q6X5qRw_g7vLHCEEN=
+83PUo9VC97JW4OADV9LVjKQuZsfotKkL_6AH6kDvd1Let3LsJpBhlUd2M4jfKCeVAYGCs-5usoY=
+5uNo-ITsDBApKzGX6k_efOCDOMpeKsRiyCLsgBS1LAulpzE_MEoSCSAlY6m7usBCR4sc6YdtnzT=
+mRbJsicBnPqhyA0X0a0Dc3--O8kmE2O1ewwzfgOC7BXFeLEOvlDNXtLSnnv8N4F8wrwYPxSykuz=
+gCF_Lp5wmX9fTM-NTEsZ7zXvvxq-XIFHglPCpWwU6U4PZyC1AXqKRpRZDEIcrqhiwM_Ch2Xt1t7=
+ucWAU5Dm_ULKcbCsdttHQOYhmLUufpYwNkySNqCVsTzoUdAPlzJjJSImZ0YO-mEEiJuZYN-ZmMr=
+9hVQl0mjxNujSwYByp8aQQqcgdSJmwfYFSEQHgDObUKsfsQgzYQG5Rr4YTkEhmOiTlasa5wCMWP=
+Oem_jmjwpsLq6jFfm9PH75TY3gJYJGQqIal7Y4JCyBp1GhA=3D=3D
+--3ac62827e3de048c98835c9cd6654dd3927dcf2b32967ea2632f52fc00c6
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html data-editor-version=3D"2" class=3D"sg-campaigns" xmlns=3D"http://www.=
+w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=
+=3D1, minimum-scale=3D1, maximum-scale=3D1" /><!--[if !mso]><!-->
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3DEdge" /><!--<![end=
+if]-->
+    <!--[if (gte mso 9)|(IE)]>
+    <xml>
+    <o:OfficeDocumentSettings>
+    <o:AllowPNG/>
+    <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <!--[if (gte mso 9)|(IE)]>
+    <style type=3D"text/css">
+      body {width: 600px;margin: 0 auto;}
+      table {border-collapse: collapse;}
+      table, td {mso-table-lspace: 0pt;mso-table-rspace: 0pt;}
+      img {-ms-interpolation-mode: bicubic;}
+    </style>
+    <![endif]-->
+
+    <style type=3D"text/css">
+      body, p, div {
+        font-family: arial;
+        font-size: 14px;
+      }
+      body {
+        color: #000000;
+      }
+      body a {
+        color: #1188E6;
+        text-decoration: none;
+      }
+      p { margin: 0; padding: 0; }
+      table.wrapper {
+        width:100% !important;
+        table-layout: fixed;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      img.max-width {
+        max-width: 100% !important;
+      }
+      .column.of-2 {
+        width: 50%;
+      }
+      .column.of-3 {
+        width: 33.333%;
+      }
+      .column.of-4 {
+        width: 25%;
+      }
+      @media screen and (max-width:480px) {
+        .preheader .rightColumnContent,
+        .footer .rightColumnContent {
+            text-align: left !important;
+        }
+        .preheader .rightColumnContent div,
+        .preheader .rightColumnContent span,
+        .footer .rightColumnContent div,
+        .footer .rightColumnContent span {
+          text-align: left !important;
+        }
+        .preheader .rightColumnContent,
+        .preheader .leftColumnContent {
+          font-size: 80% !important;
+          padding: 5px 0;
+        }
+        table.wrapper-mobile {
+          width: 100% !important;
+          table-layout: fixed;
+        }
+        img.max-width {
+          height: auto !important;
+          max-width: 480px !important;
+        }
+        a.bulletproof-button {
+          display: block !important;
+          width: auto !important;
+          font-size: 80%;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+        .columns {
+          width: 100% !important;
+        }
+        .column {
+          display: block !important;
+          width: 100% !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+      }
+    </style>
+    <!--user entered Head Start-->
+   =20
+     <!--End Head user entered-->
+  </head>
+  <body>
+    <center class=3D"wrapper" data-link-color=3D"#1188E6" data-body-style=
+=3D"font-size: 14px; font-family: arial; color: #000000; background-color: =
+#ffffff;">
+      <div class=3D"webkit">
+        <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"10=
+0%" class=3D"wrapper" bgcolor=3D"#ffffff">
+          <tr>
+            <td valign=3D"top" bgcolor=3D"#ffffff" width=3D"100%">
+              <table width=3D"100%" role=3D"content-container" class=3D"out=
+er" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                <tr>
+                  <td width=3D"100%">
+                    <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"=
+0" border=3D"0">
+                      <tr>
+                        <td>
+                          <!--[if mso]>
+                          <center>
+                          <table><tr><td width=3D"600">
+                          <![endif]-->
+                          <table width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" style=3D"width: 100%; max-width:600px;" align=3D"cent=
+er">
+                            <tr>
+                              <td role=3D"modules-container" style=3D"paddi=
+ng: 0px 0px 0px 0px; color: #000000; text-align: left;" bgcolor=3D"#ffffff"=
+ width=3D"100%" align=3D"left">
+                               =20
+    <table class=3D"module preheader preheader-hide" role=3D"module" data-t=
+ype=3D"preheader" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D=
+"100%"
+           style=3D"display: none !important; mso-hide: all; visibility: hi=
+dden; opacity: 0; color: transparent; height: 0; width: 0;">
+      <tr>
+        <td role=3D"module-content">
+          <p>Map out your internal tech stacks</p>
+        </td>
+      </tr>
+    </table>
+ =20
+    <table class=3D"wrapper" role=3D"module" data-type=3D"image" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout=
+: fixed;">
+      <tr>
+        <td style=3D"font-size:6px;line-height:10px;padding:0px 0px 0px 0px=
+;" valign=3D"top" align=3D"left">
+          <a href=3D"https://u1375320.ct.sendgrid.net/wf/click?upn=3DsR7vtb=
+7TZuKvuyw7LK5CkRLzrx373wKj5RZYAUkknB8-3D_-2BnHAC-2FIsf-2BAadL0eZXS1mmkchWFf=
+Y-2FX6i10DZS9QTmuSJXsEk5kGIBrJDfagVBPDHvXMpC-2FoaKW-2BKj09Geumk6nyTc8SlWF5M=
+kAy2jMvQ7r3r51imMTS85m-2B3MxoxqDI1bJFs1F0W-2BhXYh5RJAA-2FpvBXu9DlCkH5KozOnJ=
+2LeQfJt4o2Gz5rzCpBdbM6JSnGlsZIL6bWiqhk88AeusvoAFmr6rkalu7Ocb9R9YBzebr-2F1fa=
+aGmcyUk2iVPnNfZGgXGCBXyRQjU0ZQnC30imUu6HpxBGZSjBP0m8ka0UA-2BhEIPDSbQ-2BJ9FW=
+791708L5iocuBhbCqHXm-2FTCZdAWvX3IazKRwx453UKHXPcaEUOeKWPeLEWu5m2L1Jtojie0Wz=
+Es2JUyBd5zVIP-2FggFVMpvT93DAPl-2FsU89aO0jGair0Rh44UDFPgdI6Fx8sT3am4cSP85Fsq=
+bvJqdBK-2BhTtakErsPo10-2Ff-2B6bt-2Ft2WO10OjCs-3D"><img class=3D"max-width" =
+border=3D"0" style=3D"display:block;color:#000000;text-decoration:none;font=
+-family:Helvetica, arial, sans-serif;font-size:16px;max-width:30% !importan=
+t;width:30%;height:auto !important;" src=3D"https://marketing-image-product=
+ion.s3.amazonaws.com/uploads/6e257e37f54aa9dd93499f0f3640246733b57944636d18=
+e5673ff47d316f0401d1f00a60b38ad68a0d67777281a9382729a774e27677989f9d28a593d=
+bd2f21d.png" alt=3D"StackShare" width=3D"180"></a>
+        </td>
+      </tr>
+    </table>
+ =20
+    <table class=3D"module"
+           role=3D"module"
+           data-type=3D"spacer"
+           border=3D"0"
+           cellpadding=3D"0"
+           cellspacing=3D"0"
+           width=3D"100%"
+           style=3D"table-layout: fixed;">
+      <tr>
+        <td style=3D"padding:0px 0px 10px 0px;"
+            role=3D"module-content"
+            bgcolor=3D"">
+        </td>
+      </tr>
+    </table>
+ =20
+    <table class=3D"wrapper" role=3D"module" data-type=3D"image" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout=
+: fixed;">
+      <tr>
+        <td style=3D"font-size:6px;line-height:10px;padding:0px 0px 0px 0px=
+;" valign=3D"top" align=3D"center">
+          <a href=3D"https://u1375320.ct.sendgrid.net/wf/click?upn=3DsR7vtb=
+7TZuKvuyw7LK5CkXwKu4CVZlJLKE2sRBBaB6nRGrM9HpYrz4BiYKWmeGuprWbLhrTxlMpqHa6hc=
+nHwM-2BXbvaPOgdwGgWrSYuEHcLc-3D_-2BnHAC-2FIsf-2BAadL0eZXS1mmkchWFfY-2FX6i10=
+DZS9QTmuSJXsEk5kGIBrJDfagVBPDHvXMpC-2FoaKW-2BKj09Geumk6nyTc8SlWF5MkAy2jMvQ7=
+r3r51imMTS85m-2B3MxoxqDI1bJFs1F0W-2BhXYh5RJAA-2FpvBXu9DlCkH5KozOnJ2LeQfJt4o=
+2Gz5rzCpBdbM6JSnGlsZIL6bWiqhk88AeusvoAFmr6rkalu7Ocb9R9YBzebplSjJJnkbWLVBMO2=
+HWy9gIjpgBzGjsUP2n-2Fw97GDP0K-2BgBi3nKIdgmm8Y-2BnHaAGOe-2BYBEbCixOGt4QCU1-2=
+FER4L1-2F8PD-2FQgYdV2MaI1O3FvTZTupa7aDaaFtIFPmnaeciM7eth-2BHefHNIhfeU-2BrIM=
+w2U81zmr0T3bzXHJJtrul7EIy0eM7-2FITVjfRKB6xpCUAFCk2xY2mVDBSppn14u6L5IvI2b3O-=
+2FCEXcEptIpeDoBd6C3-2F-2BDIGBIrSQkmXWcNWLg-3D"><img class=3D"max-width" bor=
+der=3D"0" style=3D"display:block;color:#000000;text-decoration:none;font-fa=
+mily:Helvetica, arial, sans-serif;font-size:16px;max-width:100% !important;=
+width:100%;height:auto !important;" src=3D"https://marketing-image-producti=
+on.s3.amazonaws.com/uploads/42f8977681aff35b61cb66a018006c4a0819bb0bcd7d341=
+ee42a93d189cd454818e9f6307512ec25911940b81c01fd7a9dff031fe331e5e0c39561a26e=
+fea4e3.png" alt=3D"" width=3D"600"></a>
+        </td>
+      </tr>
+    </table>
+ =20
+    <table class=3D"module" role=3D"module" data-type=3D"text" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: =
+fixed;">
+      <tr>
+        <td style=3D"padding:018px 0px 18px 0px;line-height:22px;text-align=
+:inherit;"
+            height=3D"100%"
+            valign=3D"top"
+            bgcolor=3D"">
+            <div dir=3D"ltr" id=3D"docs-internal-guid-d5494766-7fff-d24d-8f=
+44-253bb82de2b5" style=3D"line-height: 1.38; margin-top: 0pt; margin-bottom=
+: 0pt;">
+<p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"=
+><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Hey Konstan=
+tin,</span></span></p>
+
+<p dir=3D"ltr" style=3D"line-height:1.38;margin-top:0pt;margin-bottom:0pt;"=
+>&nbsp;</p>
+
+<div>
+<div><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Today, =
+we&rsquo;re excited to announce the introduction of&nbsp;<strong>Private St=
+ackShare for Teams </strong>(Beta), the best way for your team to privately=
+ map out and share internal tech stacks and technology decisions&nbsp;=E2=
+=9C=A8</span></span></div>
+
+<div>&nbsp;</div>
+
+<div><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Large c=
+ompanies typically have this data and knowledge spread out over wikis, spre=
+adsheets, private version control, chat messages, closed unsearchable email=
+ accounts and listservs =F0=9F=98=A3 But we believe there&#39;s a better wa=
+y to handle all of this.</span></span></div>
+
+<div>&nbsp;</div>
+
+<div><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Private=
+ StackShare lives in a&nbsp;</span><span style=3D"font-weight: 600; backgro=
+und-image: initial; background-position: initial; background-size: initial;=
+ background-repeat: initial; background-attachment: initial; background-ori=
+gin: initial; background-clip: initial; font-style: normal; font-variant-li=
+gatures: normal; font-variant-caps: normal; font-family: arial; color: rgb(=
+0, 0, 0);">private enterprise-grade environment </span><span style=3D"color=
+:#000000;">(cloud-hosted or on-prem) and helps you to:</span></span></div>
+
+<div>&nbsp;</div>
+
+<ul>
+=09<li><span style=3D"font-size:16px;"><span style=3D"color:#000000;"><stro=
+ng>Reduce inefficiencies and duplication</strong> of technical efforts acro=
+ss engineering teams by developing a standard set of tools to solve common =
+problems</span></span></li>
+=09<li><span style=3D"font-size:16px;"><span style=3D"color:#000000;"><stro=
+ng>Streamline the evaluation of technologies</strong> for projects through =
+structured comparisons and Q&amp;A discussions within teams</span></span></=
+li>
+=09<li><span style=3D"font-size:16px;"><strong>Shorten developer onboarding=
+</strong> to new teams and projects by giving them an understanding of the =
+stack they&rsquo;ll be working on and the history behind it</span></li>
+</ul>
+
+<div>&nbsp;</div>
+
+<div><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Plus&nb=
+sp;much more! </span></span></div>
+
+<div>&nbsp;</div>
+
+<div><span style=3D"font-size:16px;"><span style=3D"color:#000000;">Email u=
+s for more information&nbsp;</span></span><span style=3D"color: rgb(51, 51,=
+ 51); font-family: arial, helvetica, sans-serif; font-size: 16px; font-styl=
+e: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-=
+weight: 400; text-align: justify;">=F0=9F=91=89&nbsp;</span><span style=3D"=
+font-weight: 600; background-image: initial; background-position: initial; =
+background-size: initial; background-repeat: initial; background-attachment=
+: initial; background-origin: initial; background-clip: initial; font-style=
+: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-f=
+amily: arial, helvetica, sans-serif; font-size: 16px; color: rgb(51, 51, 51=
+); text-align: justify;"><a href=3D"mailto:private@stackshare.io?subject=3D=
+I'm%20interested%20in%20learning%20more%20about%20Private%20StackShare%20fo=
+r%20my%20company!&amp;body=3DTell%20me%20more%20%3A)" style=3D"font-size: 1=
+6px; color: rgb(6, 144, 250);">private@stackshare.io</a>&nbsp;</span><span =
+style=3D"font-size:16px;"><span style=3D"color:#000000;">or read on to see =
+if&nbsp;Private StackShare could be helpful for your team:</span></span></d=
+iv>
+</div>
+</div>
+
+        </td>
+      </tr>
+    </table>
+  <table border=3D"0" cellPadding=3D"0" cellSpacing=3D"0" class=3D"module" =
+data-role=3D"module-button" data-type=3D"button" role=3D"module" style=3D"t=
+able-layout:fixed" width=3D"100%"><tbody><tr><td align=3D"center" class=3D"=
+outer-td" style=3D"padding:0px 0px 0px 0px"><table border=3D"0" cellPadding=
+=3D"0" cellSpacing=3D"0" class=3D"button-css__deep-table___2OZyb wrapper-mo=
+bile" style=3D"text-align:center"><tbody><tr><td align=3D"center" bgcolor=
+=3D"#068dfe" class=3D"inner-td" style=3D"border-radius:6px;font-size:16px;t=
+ext-align:center;background-color:inherit"><a style=3D"background-color:#06=
+8dfe;border:1px solid #333333;border-color:#068dfe;border-radius:6px;border=
+-width:1px;color:#ffffff;display:inline-block;font-family:arial,helvetica,s=
+ans-serif;font-size:16px;font-weight:normal;letter-spacing:0px;line-height:=
+16px;padding:12px 18px 12px 18px;text-align:center;text-decoration:none" hr=
+ef=3D"https://u1375320.ct.sendgrid.net/wf/click?upn=3DsR7vtb7TZuKvuyw7LK5Ck=
+XwKu4CVZlJLKE2sRBBaB6nRGrM9HpYrz4BiYKWmeGuprWbLhrTxlMpqHa6hcnHwM-2BXbvaPOgd=
+wGgWrSYuEHcLc-3D_-2BnHAC-2FIsf-2BAadL0eZXS1mmkchWFfY-2FX6i10DZS9QTmuSJXsEk5=
+kGIBrJDfagVBPDHvXMpC-2FoaKW-2BKj09Geumk6nyTc8SlWF5MkAy2jMvQ7r3r51imMTS85m-2=
+B3MxoxqDI1bJFs1F0W-2BhXYh5RJAA-2FpvBXu9DlCkH5KozOnJ2LeQfJt4o2Gz5rzCpBdbM6JS=
+nGlsZIL6bWiqhk88AeusvoAFmr6rkalu7Ocb9R9YBzebrXvck1EUHUyB1ZEhu9-2BEK9M4f3DTs=
+ce19gnkJYc7-2Fr-2BlOyI3BG78VNrKDobgrOzOAJN2iT-2B0nfJ3F6XeyHPzW52sjoj16AgKGG=
+4L2-2BrH27p9uRKXUQZoEe1bSv4huew850AnDOXv5gw6VgFD0WnXQ0V8SF05LWuA-2FRNZgvQtO=
+BapGzzy9vOl2pUruBkNGkOToSaAsbsfFebLoh-2FtwjhqWeimyrJYQ2NuxvM7T1mlBbPIxi3Y5S=
+-2FKwbH25CIbo6S7U-3D" target=3D"_blank">=F0=9F=91=89 Read more about Privat=
+e StackShare</a></td></tr></tbody></table></td></tr></tbody></table>
+    <table class=3D"module" role=3D"module" data-type=3D"text" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"table-layout: =
+fixed;">
+      <tr>
+        <td style=3D"padding:18px 0px 18px 0px;line-height:22px;text-align:=
+inherit;"
+            height=3D"100%"
+            valign=3D"top"
+            bgcolor=3D"">
+            <div><span style=3D"font-size:16px;">- The StackShare Team</spa=
+n></div>
+
+<div>&nbsp;</div>
+
+<div><em><span style=3D"font-size: 16px;">P.S. ICYMI we recently launched b=
+rand <a href=3D"https://u1375320.ct.sendgrid.net/wf/click?upn=3DsR7vtb7TZuK=
+vuyw7LK5CkXwKu4CVZlJLKE2sRBBaB6kP1G0EMxLWdWZovaLTzMcdYmhgrZcT6jgVDNNFTCwkcK=
+TH8xXVKyu-2F6a1wgc0skpA-3D_-2BnHAC-2FIsf-2BAadL0eZXS1mmkchWFfY-2FX6i10DZS9Q=
+TmuSJXsEk5kGIBrJDfagVBPDHvXMpC-2FoaKW-2BKj09Geumk6nyTc8SlWF5MkAy2jMvQ7r3r51=
+imMTS85m-2B3MxoxqDI1bJFs1F0W-2BhXYh5RJAA-2FpvBXu9DlCkH5KozOnJ2LeQfJt4o2Gz5r=
+zCpBdbM6JSnGlsZIL6bWiqhk88AeusvoAFmr6rkalu7Ocb9R9YBzebpV0bHP1I3LKBLnwPXLQMa=
+Zy8Qm410DzK5Q8nrBoDGNc91KqqdP76oqBMI-2F3EmS1-2FtK5zQhJNnc9GSOxoR7bRp6jzANAq=
+jCS6BubIz0RtITQCPhjIc-2FHUH73akjZHCKg2Or1ys-2FAUE931Qg-2B4TMiXwlalL4dM2IFjn=
+ANBUZU-2FRV-2FIzu60j1IpVs6VvRFp12yvGNXzAw6aHY5GXWyDHI4mTlCLcfMmwm-2Fi5D3-2F=
+8eXP3xMO4Md834zmszsNl3IFSuzXE-3D">NEW Company Engineering Profiles</a>- you=
+ can now discover and follow companies based on their tech stack to keep up=
+ with jobs, tech talks, and more</span></em></div>
+        </td>
+      </tr>
+    </table>
+ =20
+    <table class=3D"module"
+           role=3D"module"
+           data-type=3D"spacer"
+           border=3D"0"
+           cellpadding=3D"0"
+           cellspacing=3D"0"
+           width=3D"100%"
+           style=3D"table-layout: fixed;">
+      <tr>
+        <td style=3D"padding:0px 0px 30px 0px;"
+            role=3D"module-content"
+            bgcolor=3D"">
+        </td>
+      </tr>
+    </table>
+  <div data-role=3D"module-unsubscribe" class=3D"module unsubscribe-css__un=
+subscribe___2CDlR" role=3D"module" data-type=3D"unsubscribe" style=3D"color=
+:#444444;font-size:12px;line-height:20px;padding:16px 16px 16px 16px;text-a=
+lign:center"><p style=3D"font-family:StackShare;font-size:12px;line-height:=
+20px"><a class=3D"Unsubscribe--unsubscribeLink" href=3D"https://u1375320.ct=
+.sendgrid.net/asm/unsubscribe/?user_id=3D1375320&data=3DxrlJsRBLZ5F_8-1Mj9_=
+AcampHTWPVmlqq6QHRdTG9EU-q02Kp-vhKEWuW1PFCrE9a7laFz4vAzW58q6mo9bqQJklDL2Gwa=
+tsyChQ_EIklWORZNyVCTCpT3h0FFURxSZ58YjDSFH0fjcV1cWQsnpgYWwbzhAhzEQkprehakhcR=
+ImMYNOcrx6YC3SW14ko8iVDw3Zp5gNRrQDep6m9D5GNNT8Ji42joL8dTRKbQiN2LIPpBYZxO8v6=
+jeZYdQlLUVd7ZAugj3Uu6DVHyn_bEEJbaGdBZGoG3ZVf8_d4jauS-g9oCIQnUa9LOgwQa6jbXDw=
+d-i2EFBDx20yyof79_x-YLvVTqxsVkZofK23n1x6m3C5JuhUTqDuOkPoVZ4ZkQ14N0Km6igZIWu=
+t-oyMy1rs8MFxldbdU7xkqEIv7-3Z7NLV1hxH3MU_h-8StWHySorMW34SbS0qzFouxdqmJl7hTM=
+pEec7n9HteLauknBJRUmULGSoRPaQlLNyTSUagQ_X08c_KXDnTiVhMr7jMdFEd2fwXRbQ-sLcXP=
+QUQfAvuKw3DDVT1IyAa2qNUhvEw2_vzmTCYwSXj6UOeiMXZuB7OESBnE0F7i_BJystelT8jBNdQ=
+=3D" style=3D"color:#9b9b9b">Unsubscribe</a> - <a class=3D"Unsubscribe--uns=
+ubscribePreferences" href=3D"https://u1375320.ct.sendgrid.net/asm/?user_id=
+=3D1375320&data=3DwP6Z7iEgPOX_vfsM8k6qbaGww930ksnjXsGGwz1kJL-xn173XRvqpil42=
+nnyV7Wcq75PWWFvp47jqu_i__m-Q6X5qRw_g7vLHCEEN83PUo9VC97JW4OADV9LVjKQuZsfotKk=
+L_6AH6kDvd1Let3LsJpBhlUd2M4jfKCeVAYGCs-5usoY5uNo-ITsDBApKzGX6k_efOCDOMpeKsR=
+iyCLsgBS1LAulpzE_MEoSCSAlY6m7usBCR4sc6YdtnzTmRbJsicBnPqhyA0X0a0Dc3--O8kmE2O=
+1ewwzfgOC7BXFeLEOvlDNXtLSnnv8N4F8wrwYPxSykuzgCF_Lp5wmX9fTM-NTEsZ7zXvvxq-XIF=
+HglPCpWwU6U4PZyC1AXqKRpRZDEIcrqhiwM_Ch2Xt1t7ucWAU5Dm_ULKcbCsdttHQOYhmLUufpY=
+wNkySNqCVsTzoUdAPlzJjJSImZ0YO-mEEiJuZYN-ZmMr9hVQl0mjxNujSwYByp8aQQqcgdSJmwf=
+YFSEQHgDObUKsfsQgzYQG5Rr4YTkEhmOiTlasa5wCMWPOem_jmjwpsLq6jFfm9PH75TY3gJYJGQ=
+qIal7Y4JCyBp1GhA=3D=3D" style=3D"color:#9b9b9b">Unsubscribe Preferences</a>=
+</p></div>
+    <table class=3D"module"
+           role=3D"module"
+           data-type=3D"spacer"
+           border=3D"0"
+           cellpadding=3D"0"
+           cellspacing=3D"0"
+           width=3D"100%"
+           style=3D"table-layout: fixed;">
+      <tr>
+        <td style=3D"padding:0px 0px 30px 0px;"
+            role=3D"module-content"
+            bgcolor=3D"">
+        </td>
+      </tr>
+    </table>
+ =20
+                              </td>
+                            </tr>
+                          </table>
+                          <!--[if mso]>
+                          </td></tr></table>
+                          </center>
+                          <![endif]-->
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </center>
+ =20
+<img src=3D"https://u1375320.ct.sendgrid.net/wf/open?upn=3D-2BnHAC-2FIsf-2B=
+AadL0eZXS1mmkchWFfY-2FX6i10DZS9QTmuSJXsEk5kGIBrJDfagVBPDHvXMpC-2FoaKW-2BKj0=
+9Geumk6nyTc8SlWF5MkAy2jMvQ7r3r51imMTS85m-2B3MxoxqDI1bJFs1F0W-2BhXYh5RJAA-2F=
+pvBXu9DlCkH5KozOnJ2LeQfJt4o2Gz5rzCpBdbM6JSnGlsZIL6bWiqhk88AeusvoAFmr6rkalu7=
+Ocb9R9YBzeboG2CI4xyuL5yF0dtAoCpFn8W806fCSvhIDkBOORo9No1u2b4WSRSIq0JkOeN-2FX=
+5z6poLO7e5Erx-2B9a989-2BEkpHBERn4B-2FNYu94DyMSe7NZSnRlLB2y9f8aBzvzvHtgCguWJ=
+Gw0xMCxhCDuJ8BKIRhnLz1rSa8P98qxvthRQocfIuuaK6cAFUmtBrYxSLta53m142LXQgHgXENv=
+LBlxuQNj8Bwc8ae68N0bGyiRIobllkmu2qjsTtUPEzj61n5ayNA-3D" alt=3D"" width=3D"1=
+" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !impor=
+tant;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !imp=
+ortant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !im=
+portant;padding-bottom:0 !important;padding-right:0 !important;padding-left=
+:0 !important;"/>
+</body>
+</html>
+
+--3ac62827e3de048c98835c9cd6654dd3927dcf2b32967ea2632f52fc00c6--
